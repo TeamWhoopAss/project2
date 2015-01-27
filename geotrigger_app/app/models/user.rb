@@ -3,6 +3,7 @@ require 'geocoder'
 
 class User < ActiveRecord::Base
 	has_secure_password
+	has_one :location
   
   validates_confirmation_of :email
   validates_presence_of :password_confirmation
