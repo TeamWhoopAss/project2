@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'sites/index'
+  get '/about', to: "sites#about"
 
-  get 'sites/about'
-
-  get 'sites/contact'
+  get '/contact', to: "sites#contact"
 
 	root to: "sites#index"
   
