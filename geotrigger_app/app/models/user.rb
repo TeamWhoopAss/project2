@@ -1,4 +1,6 @@
 require 'bcrypt'
+require 'geocoder'
+
 class User < ActiveRecord::Base
 	has_secure_password
   
@@ -9,11 +11,19 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates_presence_of :email
 
+  geocoded_by :full_street_address
+  after_validation :geocode, :if => :address_changed?
+
+  def search_results
+  	results = Geocoder.search("Golden Gate Park, San Francisco, CA")
+  	parse_results = JSON.parse(results)
+  end
+
   def self.confirm(email_param, password_param)
     user = User.find_by({email: email_param})
     if user
       user.authenticate(password_param)
     end
   end
-  
+
 end
