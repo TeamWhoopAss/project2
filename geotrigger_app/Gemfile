@@ -28,6 +28,8 @@ gem 'geocoder'
 gem 'bcrypt', '~> 3.1.7'
 # Redis for Rails
 gem 'redis-rails'
+# Parse JSON data
+gem 'json', '~> 1.8.2'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
