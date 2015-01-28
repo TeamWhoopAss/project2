@@ -1,0 +1,55 @@
+<!-- <h1>Sites#contact</h1>
+<p>Find me in app/views/sites/contact.html.erb</p> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Custom tooltip styles with CSS</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:50%; }
+</style>
+</head>
+<body>
+
+
+<style>
+/*
+ * These CSS rules affect the tooltips within maps with the custom-popup
+ * class. See the full CSS for all customizable options:
+ * https://github.com/mapbox/mapbox.js/blob/001754177f3985c0e6b4a26e3c869b0c66162c99/theme/style.css#L321-L366
+ */
+.custom-popup .leaflet-popup-content-wrapper {
+  background:#2c3e50;
+  color:#fff;
+  font-size:16px;
+  line-height:24px;
+  }
+.custom-popup .leaflet-popup-content-wrapper a {
+  color:rgba(255,255,255,0.5);
+  }
+.custom-popup .leaflet-popup-tip-container {
+  width:30px;
+  height:15px;
+  }
+.custom-popup .leaflet-popup-tip {
+  border-left:15px solid transparent;
+  border-right:15px solid transparent;
+  border-top:15px solid #2c3e50;
+  }
+</style>
+</head>
+<body>
+<div class='custom-popup' id='map'></div>
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoibWFya21hcmttYXJrIiwiYSI6IjBVV1oxYUkifQ.eq_QpInsA8ggRqbXrJRtAw';
+var map = L.mapbox.map('map', 'examples.map-zr0njcqy');
+</script>
+
+
+</body>
+</html>
