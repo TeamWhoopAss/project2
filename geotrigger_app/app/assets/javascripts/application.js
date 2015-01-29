@@ -10,8 +10,12 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require mapbox.js
+//= require animatescroll.js
+//= require bootstrap.min.js
+//= require retina.min.js
+//= require scripts.js
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require mapbox.js
