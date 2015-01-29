@@ -32,6 +32,8 @@ gem 'redis-rails'
 gem 'json', '~> 1.8.2'
 # Mapping Software
 gem 'mapbox-rails'
+#twitter Oauth
+gem 'twitter_oauth'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -52,5 +54,9 @@ group :development, :test do
 	gem 'dotenv-rails'
 
   gem 'rspec-rails', '~> 3.0.0'
+
+  gem 'ffaker'
+  
+  gem 'pry-rails'
 end
 
