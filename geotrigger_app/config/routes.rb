@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   get '/about', to: "sites#about"
 
   get '/contact', to: "sites#contact"
-
-	root to: "sites#index"
   
   root to: 'users#index'
   
@@ -14,7 +12,7 @@ Rails.application.routes.draw do
 
   get 'users/index'
 
- get 'sessions/new'
+  get 'sessions/new'
   
   get 'users/show'
 

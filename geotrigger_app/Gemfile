@@ -53,15 +53,11 @@ group :development, :test do
   # Hide secret keys
 	gem 'dotenv-rails'
 
-  gem 'rspec-rails', '~> 3.0.0'
-<<<<<<< HEAD
-  
-
-=======
+  gem 'rspec-rails', '~> 3.0.0'  
 
   gem 'ffaker'
   
   gem 'pry-rails'
->>>>>>> 33af06a5fdad6ac365c602cafa68e709b0013797
+
 end
 
