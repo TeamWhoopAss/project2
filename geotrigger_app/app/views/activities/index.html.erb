@@ -1,0 +1,16 @@
+<div>
+  <h1>Activities#index</h1>
+  <p>Find me in app/views/activities/index.html.erb</p>
+
+<%= @activities %>
+<% @activities.each do |activity| %>
+  <div>
+    <p>
+       <strong>Latitude:</strong>  <%= activity.latitude %>
+       <strong>Longtitude:</strong>  <%= activity.longitude%>
+       <strong>Location:</strong>  <%= activity.location_name %>
+       <strong>Type of Activity:</strong>  <%= activity.activity_tag %>
+      
+    </p>
+  </div>
+<% end %>
