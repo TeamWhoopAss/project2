@@ -61,10 +61,22 @@ color: black;
 background-color: black;
 border-radius: 200px;
   }
+
+.dashboard {
+  border: solid;
+  border-width: thick;
+  color: black;
+  float: right;
+
+}
 </style>
 </head>
+
 <body>
 <div class='custom-popup' id='map'></div>
+<div class='dashboard' id='friends'></div>
+<div class='dashboard' id='activities'></div>
+
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoibWFya21hcmttYXJrIiwiYSI6IjBVV1oxYUkifQ.eq_QpInsA8ggRqbXrJRtAw';
 var map = L.mapbox.map('map', 'examples.map-zr0njcqy');
@@ -73,6 +85,3 @@ var map = L.mapbox.map('map', 'examples.map-zr0njcqy');
 </html>
 
 
-<!-- default public token: pk.eyJ1IjoibWFya21hcmttYXJrIiwiYSI6IjBVV1oxYUkifQ.eq_QpInsA8ggRqbXrJRtAw -->
-
-<!-- default secret token: sk.eyJ1IjoibWFya21hcmttYXJrIiwiYSI6IkJmdFFEaWcifQ.KJ7QtjxktAGA6vS0pZPqTw -->
