@@ -30,6 +30,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'redis-rails'
 # Parse JSON data
 gem 'json', '~> 1.8.2'
+# Mapping Software
+gem 'mapbox-rails'
+#twitter Oauth
+gem 'twitter_oauth'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -50,7 +54,14 @@ group :development, :test do
 	gem 'dotenv-rails'
 
   gem 'rspec-rails', '~> 3.0.0'
+<<<<<<< HEAD
   
 
+=======
+
+  gem 'ffaker'
+  
+  gem 'pry-rails'
+>>>>>>> 33af06a5fdad6ac365c602cafa68e709b0013797
 end
 

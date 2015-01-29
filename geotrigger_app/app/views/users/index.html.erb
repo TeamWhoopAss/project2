@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div>
   <h1>Users#index</h1>
   <p>Find me in app/views/users/index.html.erb</p>
@@ -12,4 +13,62 @@
     </p>
   </div>
 <% end %>
+
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top: 25px; bottom:25px; width:50%; }
+</style>
+<style>
+/*
+* These CSS rules affect the tooltips within maps with the custom-popup
+* class. See the full CSS for all customizable options:
+* https://github.com/mapbox/mapbox.js/blob/001754177f3985c0e6b4a26e3c869b0c66162c99/theme/style.css#L3...
+*/
+.custom-popup .leaflet-popup-content-wrapper {
+  background:#2c3e50  ;
+  color:#fff;
+  font-size:16px;
+  line-height:24px;
+border-radius: 20px;
+  }
+.custom-popup .leaflet-popup-content-wrapper a {
+  color:rgba(255,255,255,0.5);
+  border-color: red;
+border: aliceblue;
+border-width: thick;
+color: black;
+background-color: black;
+border-radius: 200px;
+  }
+.custom-popup .leaflet-popup-tip-container {
+  width:30px;
+  height:15px;
+  border-color: red;
+border: aliceblue;
+border-width: thick;
+color: black;
+background-color: black;
+border-radius: 200px;
+  }
+.custom-popup .leaflet-popup-tip {
+  border-left:15px solid transparent;
+  border-right:15px solid transparent;
+  border-top:15px solid #2c3e50 ;
+  border-radius: 15px;
+  border-color: red;
+border: aliceblue;
+border-width: thick;
+color: black;
+background-color: black;
+border-radius: 200px;
+  }
+</style>
+<div class='custom-popup' id='map'></div>
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoibWFya21hcmttYXJrIiwiYSI6IjBVV1oxYUkifQ.eq_QpInsA8ggRqbXrJRtAw';
+var map = L.mapbox.map('map', 'examples.map-zr0njcqy');
+</script>
 
