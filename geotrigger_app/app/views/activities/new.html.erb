@@ -6,6 +6,7 @@
     Personal Message: <br>
     <textarea name="activity[activity_description]"></textarea> <br>
     <%= token_tag form_authenticity_token %>
-
+    :lat = current_user.lat
+    :long = current_user.long
     <button> Post Activity </button>
 </form>

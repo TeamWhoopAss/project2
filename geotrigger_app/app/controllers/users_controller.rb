@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in?, only: [:show]
+  # before_action :logged_in?, only: [:show]
 
 	def index
 		@users = User.all
@@ -16,7 +16,8 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@user_friends = current_user.friends
+		@user = current_user
+		@friends = current_user.friends
 	end
 
 	private

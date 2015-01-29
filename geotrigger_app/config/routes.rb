@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  root to: 'users#index'
+  
+  get 'user/show', to: "users#show"
+  
   get 'sessions/new'
 
   get 'users/index'
@@ -10,8 +14,11 @@ Rails.application.routes.draw do
 
   get 'users/edit'
 
-  resources :users, except: [:index, :new]
+  resources :users, except: [:new]
 
   resources :sessions, only: [:create, :delete]
-  
+
+  resources :friendships
+
+  resources :activities
 end

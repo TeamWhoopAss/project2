@@ -10,7 +10,9 @@
        <strong>Longtitude:</strong>  <%= activity.longitude%>
        <strong>Location:</strong>  <%= activity.location_name %>
        <strong>Type of Activity:</strong>  <%= activity.activity_tag %>
-      
+      <%= link_to "EDIT", edit_activity_path(activity), method: "GET" %> 
+      <%= button_to "DELETE",  activity_path(activity), method: :delete %>
+
     </p>
   </div>
 <% end %>

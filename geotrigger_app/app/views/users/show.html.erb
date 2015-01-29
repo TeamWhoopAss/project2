@@ -1,2 +1,17 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1> Your Profile! <h1>
+<p> Username: <%= @user.email %></p>
+<h2> Your Friends! <h2>
+<% @friends.each do |friend| %>
+	<div>
+		<%= friend.email %>
+		<%= button_to "remove", friend, :method => :delete %>
+	</div>
+<% end %>
+<p><%= link_to "Find Friends", users_path %></p>
+
+<h2>Users Who Have Befriended You</h2>
+<ul>
+  <% for user in @user.inverse_friends %>
+  <li><%= user.email %></li>
+  <% end %>
+</ul>
