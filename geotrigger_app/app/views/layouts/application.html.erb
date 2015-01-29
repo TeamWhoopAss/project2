@@ -16,13 +16,21 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <!-- Template Styles -->
-  <link href="assets/application.css" rel="stylesheet" media="screen">
-  <link href="assets/iconfont.css" rel="stylesheet" type="text/css">
+  <!-- <link href="assets/application.css" rel="stylesheet" media="screen">
+  <link href="assets/iconfont.css" rel="stylesheet" type="text/css"> -->
+  <!-- Load JQuery & JQuery UI -->
+<!-- 	// <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
-<body>
+	<body>
+
 		<%= render partial: "layouts/navigation" %>
 
 		<%= yield %>
 
+		<script type='text/javascript' src='vendor/assets/scripts.js'></script>
 	</body>
 </html>
