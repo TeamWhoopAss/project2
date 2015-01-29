@@ -63,10 +63,29 @@ border-radius: 200px;
   }
 
 .dashboard {
-  border: solid;
-  border-width: thick;
-  color: black;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
   float: right;
+  width: 145px;
+  position: relative;
+  top: 10px;
+  margin: 15px;
+  padding: 20px 20px 510px;
+  overflow: hidden;
+  border: 2px solid;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  font: normal 16px/1 "Times New Roman", Times, serif;
+  color: rgba(255,255,255,1);
+  text-align: center;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  background: #bcced6;
+  -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+  box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
+}
 
 }
 </style>
@@ -74,8 +93,8 @@ border-radius: 200px;
 
 <body>
 <div class='custom-popup' id='map'></div>
-<div class='dashboard' id='friends'></div>
-<div class='dashboard' id='activities'></div>
+<div class='dashboard' id='friends'>Friends</div>
+<div class='dashboard' id='activities'>Activities</div>
 
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoibWFya21hcmttYXJrIiwiYSI6IjBVV1oxYUkifQ.eq_QpInsA8ggRqbXrJRtAw';
