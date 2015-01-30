@@ -1,22 +1,38 @@
-
+<div class = 'user'>
 <%= @users %>
 <% @users.each do |user| %>
 
-    <div class = 'user'>
     <p>
       <strong><%= user.email %></strong>
         <%= button_to "Add Friend", friendships_path(:friend_id => user), :method => "post" %>
         </p>
-      </div>
     <% end %>
-
+</div>
 
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
 <style>
   body { margin: 200px; padding: 200px; position: relative}
-  #map { position: absolute; left: 25%; display: inline-block; top: 25px; bottom:25px; width:50%; }
+  #map { position: absolute; 
+         left: 25%; 
+         display: inline-block;
+         margin: 0 auto;
+         top: 25px;
+         bottom:25px; 
+         width: 50%;
+         height: 100%;
+         border-radius: 100%;
+         background-color: black;
+         background-image: 
+         radial-gradient(center, rgba(255,255,255,1) 100%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 50%),
+        linear-gradient(top, rgba(0,0,0,1) 100%, rgba(113,113,114,1) 100%);
+        background-size: 128px 128px, 100%, 100%;
+    background-position: center -54px, left top;
+    background-repeat: no-repeat, repeat;
+    z-index: 1;
+
+       }
 </style>
 <style>
 /*
@@ -51,7 +67,11 @@ background-color: black;
 border-radius: 200px;
   }
   .user {
-    display: inline-block;
+    position: absolute;
+    right: 10px;
+    top: 50px;
+    height: 100%;
+    width: 30px;
     
   }
 .custom-popup .leaflet-popup-tip {
