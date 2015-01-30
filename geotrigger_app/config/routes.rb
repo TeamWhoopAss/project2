@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get '/contact', to: "sites#contact"
   
-  root to: 'users#index'
+  # root to: 'users#index'
   
   get 'user/show', to: "users#show"
   
@@ -14,12 +14,16 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
   
-  get 'users/show'
+
 
   get '/sign_up', to: "users#new"
 
   get '/login', to: "sessions#new"
   # get 'users/new'
+
+  get 'sign_up', to: 'users#new'
+  get 'login', to: 'sessions#new'
+
 
   # get 'users/edit'
 
@@ -31,7 +35,7 @@ Rails.application.routes.draw do
 
   resources :activities
   
-  get "/twitter/connect", to: "sessions#twitter_connect"
+  # get "/twitter/connect", to: "sessions#twitter_connect"
 
-  get "/oauth/callback", to: "sessions#twitter_callback"
+  # get "/oauth/callback", to: "sessions#twitter_callback"
 end

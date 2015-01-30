@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-# <<<<<<< HEAD
+
 	has_secure_password
 	has_one :activity
   has_many :friendships

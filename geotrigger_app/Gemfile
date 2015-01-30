@@ -54,10 +54,14 @@ group :development, :test do
 	gem 'dotenv-rails'
 
   gem 'rspec-rails', '~> 3.0.0'  
-
-  gem 'ffaker'
+# # <<<<<<< HEAD
   
-  gem 'pry-rails'
 
+# =======
+
+#   gem 'ffaker'
+  
+#   # gem 'pry-rails'
+# >>>>>>> 33af06a5fdad6ac365c602cafa68e709b0013797
 end
 
