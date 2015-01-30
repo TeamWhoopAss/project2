@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-<<<<<<< HEAD
+
 	has_secure_password
 	has_one :activity
   has_many :friendships
@@ -23,8 +23,7 @@ class User < ActiveRecord::Base
   	results = Geocoder.search("Golden Gate Park, San Francisco, CA")
   	parse_results = JSON.parse(results)
   end
-=======
->>>>>>> 33af06a5fdad6ac365c602cafa68e709b0013797
+
 
   def client
     @client ||= TwitterOAuth::Client.new(
