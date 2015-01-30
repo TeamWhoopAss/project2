@@ -1,26 +1,22 @@
 
-<div>
-  <h1>Users#index</h1>
-  <p>Find me in app/views/users/index.html.erb</p>
-<div>
 <%= @users %>
 <% @users.each do |user| %>
-  <div>
+
+    <div class = 'user'>
     <p>
       <strong><%= user.email %></strong>
-       <%= button_to "Add Friend", friendships_path(:friend_id => user), :method => "post" %>
-      <div class="clear"></div>
-    </p>
-  </div>
-<% end %>
-<div>
+        <%= button_to "Add Friend", friendships_path(:friend_id => user), :method => "post" %>
+        </p>
+      </div>
+    <% end %>
+
 
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
 <style>
-  body { margin:0; padding:0; }
-  #map { position:absolute; top: 25px; bottom:25px; width:50%; }
+  body { margin: 200px; padding: 200px; position: relative}
+  #map { position: absolute; left: 25%; display: inline-block; top: 25px; bottom:25px; width:50%; }
 </style>
 <style>
 /*
@@ -55,8 +51,7 @@ background-color: black;
 border-radius: 200px;
   }
   .user {
-
-
+    display: inline-block;
     
   }
 .custom-popup .leaflet-popup-tip {
@@ -71,6 +66,8 @@ color: black;
 background-color: black;
 border-radius: 200px;
   }
+
+  
 </style>
 <div class='custom-popup' id='map'></div>
 <script>
