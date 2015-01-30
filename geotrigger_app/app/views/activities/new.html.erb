@@ -1,12 +1,22 @@
 <form action="/activities" method="post">
+
+    Latitude <br>
+    <input type="text" name="activity[lat]"> <br>
+
+
+    Longitude: <br>
+    <input type="text" name="activity[lon]"> <br>
+
+
     Type of Activity: <br>
     <input type="text" name="activity[activity_tag]"> <br>
+    
     Name of Location: <br>
     <input type="text" name="activity[location_name]"> <br>
+    
     Personal Message: <br>
     <textarea name="activity[activity_description]"></textarea> <br>
     <%= token_tag form_authenticity_token %>
-    :lat = current_user.lat
-    :long = current_user.long
+    
     <button> Post Activity </button>
 </form>

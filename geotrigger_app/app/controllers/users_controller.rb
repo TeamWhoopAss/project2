@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		#raise session[:user_id].inspect
 		@user = current_user
 		@friends = current_user.friends
 	end
@@ -30,4 +31,9 @@ class UsersController < ApplicationController
 		def find_user
 			@user = User.find(params[:id])
 		end
+
+		def destroy
+			@user.destroy
+		end
+
 end

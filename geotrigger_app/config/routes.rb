@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
+  root to: "sites#index"
+
   get '/about', to: "sites#about"
 
   get '/contact', to: "sites#contact"
-
-	root to: "sites#index"
   
   # root to: 'users#index'
   
@@ -17,12 +17,19 @@ Rails.application.routes.draw do
   get 'sessions/new'
   
 
+
+  get '/sign_up', to: "users#new"
+
+  get '/login', to: "sessions#new"
+  # get 'users/new'
+
   get 'sign_up', to: 'users#new'
   get 'login', to: 'sessions#new'
 
+
   # get 'users/edit'
 
-  resources :users, except: [:new]
+  resources :users
 
   resources :sessions, only: [:create, :delete]
 

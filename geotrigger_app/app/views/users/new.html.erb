@@ -1,5 +1,20 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>Create an Account</h1>
+<p>Sign Up below!</p>
 
 <!-- this is the Twitter button -->
-<button>Sign-In with Twitter</button>
+<!-- <button>Sign-In with Twitter</button> -->
+
+<%= form_for @user do |f| %>
+	<div>
+		<%= f.text_field :email, placeholder: "Email" %>
+	</div>
+	<div>
+		<%= f.text_field :password, placeholder: "Password" %>
+	</div>
+	<div>
+		<%= f.text_field :password_confirmation, placeholder: "Password Confirmation" %>
+	</div>
+	<div>
+		<%= f.submit %>
+	</div>
+<% end %>

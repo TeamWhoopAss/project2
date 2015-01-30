@@ -53,7 +53,7 @@ group :development, :test do
   # Hide secret keys
 	gem 'dotenv-rails'
 
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-rails', '~> 3.0.0'  
 # # <<<<<<< HEAD
   
 
