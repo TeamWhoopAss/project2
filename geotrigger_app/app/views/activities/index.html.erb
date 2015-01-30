@@ -1,8 +1,9 @@
 <div>
-  <h1>Activities#index</h1>
-  <p>Find me in app/views/activities/index.html.erb</p>
-
-<%= @activities %>
+  <br>
+  <br>
+  <br>
+  <h1>Active Activities</h1>
+<%= link_to "New Activity", '/activities/new', method: "GET" %>
 <% @activities.each do |activity| %>
   <div>
     <p>
@@ -10,9 +11,8 @@
        <strong>Longtitude:</strong>  <%= activity.lon %>
        <strong>Location:</strong>  <%= activity.location_name %>
        <strong>Type of Activity:</strong>  <%= activity.activity_tag %>
-       <strong> Activity Description:</strong> <%= activity.activity_description %>
-      <%= link_to "EDIT", edit_activity_path(activity), method: "GET" %> 
-      <%= button_to "DELETE",  activity_path(activity), method: :delete %>
+       <strong> Activity Description:</strong> <%= activity.activity_description %><%= button_to "EDIT", edit_activity_path(activity), method: "GET" %> 
+       <%= button_to "DELETE",  activity_path(activity), method: :delete %>
 
     </p>
   </div>
