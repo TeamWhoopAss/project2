@@ -83,3 +83,5 @@ production:
   database: geotrigger_app_production
   username: geotrigger_app
   password: <%= ENV['GEOTRIGGER_APP_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  database: db/production.postgresql
