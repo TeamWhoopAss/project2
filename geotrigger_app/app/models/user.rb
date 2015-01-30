@@ -15,9 +15,9 @@ class User < ActiveRecord::Base
   # validates_uniqueness_of :email
   # validates_presence_of :email
 
-  geocoded_by :ip_address,
-  :latitude => :lat, :longitude => :lon
-  after_validation :geocode
+  # geocoded_by :ip_address,
+  # :latitude => :lat, :longitude => :lon
+  # after_validation :geocode
 
   def search_results
   	results = Geocoder.search("Golden Gate Park, San Francisco, CA")
