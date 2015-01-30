@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   # root to: 'users#index'
   
-  get 'user/show', to: "users#show"
+  get 'users/show', to: "users#show"
   
   get 'sessions/new'
 

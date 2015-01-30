@@ -462,6 +462,65 @@ header .carousel-indicators li {
 }
 
 /*-----------------------------------------------------------------------------------*/
+/*	User Dashboard
+/*-----------------------------------------------------------------------------------*/
+
+.user-dashboard{
+
+	padding: 230px 0px 150px 0px;
+	min-height: 600px;
+	background: url(../assets/show_bg.jpg);
+	background-position: center center;
+	overflow: hidden;
+	color: white;
+}
+
+.user-dashboard {
+	text-transform: uppercase;
+	font-weight: 300;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 2.8em;
+	color: white;
+}
+
+.user-dashboard p{
+	font-weight: 200;
+	color: white;
+}
+
+.user-dashboard h1,h2{
+	color: white;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* USER-FRIENDS
+/*-----------------------------------------------------------------------------------*/
+
+.user-friends{
+	overflow: hidden;
+	padding: 30px;
+	min-height: 400px;
+	background: white;
+}
+
+.user-friends {
+	text-transform: uppercase;
+	font-weight: 300;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 2.8em;
+	color: white;
+}
+
+.user-friends p{
+	font-weight: 200;
+	color: white;
+}
+
+.user-friends h1,h2{
+	color: white;
+}
+
+/*-----------------------------------------------------------------------------------*/
 /*	MEDIA QUERIES
 /*-----------------------------------------------------------------------------------*/
 
