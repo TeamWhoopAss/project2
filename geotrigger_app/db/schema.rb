@@ -17,25 +17,18 @@ ActiveRecord::Schema.define(version: 20150129034931) do
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
-    t.integer  "initiater"
-    t.integer  "joiner"
+    t.integer  "user_id"
+    t.integer  "friend_id"
     t.datetime "created_at",           null: false
     t.datetime "expires_at"
-    t.float    "latitude"
-    t.float    "longitude"
+    t.float    "lat"
+    t.float    "lon"
     t.text     "location_name"
     t.text     "activity_tag"
     t.text     "activity_description"
     t.binary   "pin_accepted"
     t.binary   "pin_confirmed"
     t.datetime "updated_at",           null: false
-  end
-
-  create_table "friends", force: :cascade do |t|
-    t.integer  "user_1"
-    t.integer  "user_2"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "friendships", force: :cascade do |t|

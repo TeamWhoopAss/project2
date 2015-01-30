@@ -8,7 +8,9 @@ class ActivitiesController < ApplicationController
 	end
 
 	def create
-		activity = params.require(:activity).permit(:location_name, :activity_tag, :activity_description)
+		#raise request.remote_ip.inspect
+		activity = params.require(:activity).permit(:lat, :lon, :location_name, :activity_tag, :activity_description)
+		# activity[:ip_address] = request.remote_ip
 		Activity.create(activity)
 		redirect_to '/activities'		
 	end

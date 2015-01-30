@@ -2,7 +2,7 @@
 <div>
   <h1>Users#index</h1>
   <p>Find me in app/views/users/index.html.erb</p>
-
+<div>
 <%= @users %>
 <% @users.each do |user| %>
   <div>
@@ -13,6 +13,7 @@
     </p>
   </div>
 <% end %>
+<div>
 
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
@@ -53,6 +54,11 @@ color: black;
 background-color: black;
 border-radius: 200px;
   }
+  .user {
+
+
+    
+  }
 .custom-popup .leaflet-popup-tip {
   border-left:15px solid transparent;
   border-right:15px solid transparent;
@@ -69,6 +75,6 @@ border-radius: 200px;
 <div class='custom-popup' id='map'></div>
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoibWFya21hcmttYXJrIiwiYSI6IjBVV1oxYUkifQ.eq_QpInsA8ggRqbXrJRtAw';
-var map = L.mapbox.map('map', 'examples.map-zr0njcqy');
+var map = L.mapbox.map('map', 'jkdale89.l2l2p32i');
 </script>
 

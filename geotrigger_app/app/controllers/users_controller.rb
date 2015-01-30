@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		#raise session[:user_id].inspect
 		@user = current_user
 		@friends = current_user.friends
 	end

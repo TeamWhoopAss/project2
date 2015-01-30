@@ -16,11 +16,14 @@ Rails.application.routes.draw do
   
   get 'users/show'
 
+  get '/sign_up', to: "users#new"
+
+  get '/login', to: "sessions#new"
   # get 'users/new'
 
   # get 'users/edit'
 
-  resources :users, except: [:new]
+  resources :users
 
   resources :sessions, only: [:create, :delete]
 
