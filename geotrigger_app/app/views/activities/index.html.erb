@@ -1,0 +1,19 @@
+<div>
+  <br>
+  <br>
+  <br>
+  <h1>Active Activities</h1>
+<%= link_to "New Activity", '/activities/new', method: "GET" %>
+<% @activities.each do |activity| %>
+  <div>
+    <p>
+       <strong>Latitude:</strong>  <%= activity.lat %>
+       <strong>Longtitude:</strong>  <%= activity.lon %>
+       <strong>Location:</strong>  <%= activity.location_name %>
+       <strong>Type of Activity:</strong>  <%= activity.activity_tag %>
+       <strong> Activity Description:</strong> <%= activity.activity_description %><%= button_to "EDIT", edit_activity_path(activity), method: "GET" %> 
+       <%= button_to "DELETE",  activity_path(activity), method: :delete %>
+
+    </p>
+  </div>
+<% end %>

@@ -1,0 +1,22 @@
+
+<h1>Sessions#new</h1>
+<br>
+<div class="container">
+	<h4>Login</h4>
+	<div class="col-xs-12">
+
+
+
+		<%= form_for @user, url: "/sessions" do |f| %>
+			<div>
+				<%= f.text_field :email, placeholder: "Email" %>
+			</div>
+			<div>
+				<%= f.text_field :password, placeholder: "Password" %>
+			</div>
+			<div>
+				<%= f.submit "LOGIN" %>
+			</div>
+		<% end %>
+	</div>
+</div>

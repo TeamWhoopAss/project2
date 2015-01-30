@@ -1,0 +1,23 @@
+<h1> Your Profile! <h1>
+	<p> Welcome <%= @user.email %></p>
+		<div class="row">
+			<div class="col-xs-6">
+
+			<h2> Your Friends! <h2>
+			<% @friends.each do |friend| %>
+				<div>
+					<%= friend.email %>
+					<%= button_to "remove", friend, :method => :delete %>
+				</div>
+			<% end %>
+			<p><%= link_to "Find Friends", users_path %></p>
+		</div>
+
+		<h2>Users Who Have Befriended You</h2>
+		<ul>
+		  <% for user in @user.inverse_friends %>
+		  <li><%= user.email %></li>
+		  <% end %>
+		</ul>
+	</div>
+
