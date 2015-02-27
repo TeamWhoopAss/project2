@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
   
+  get 'users/next_steps'
 
 
   get '/sign_up', to: "users#new"
