@@ -508,16 +508,16 @@ header .carousel-indicators li {
 	font-weight: 300;
 	font-family: 'Roboto Condensed', sans-serif;
 	font-size: 2.8em;
-	color: white;
+	color: black;
 }
 
 .user-friends p{
 	font-weight: 200;
-	color: white;
+	color: black;
 }
 
 .user-friends h1,h2{
-	color: white;
+	color: black;
 }
 
 /*-----------------------------------------------------------------------------------*/
