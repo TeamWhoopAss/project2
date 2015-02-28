@@ -11,10 +11,10 @@
 // about supported directives.
 //
 //= require mapbox.js
-//= require animatescroll
-//= require bootstrap.min
-//= require retina.min
-//= require scripts
+// require animatescroll
+// require bootstrap.min
+// require retina.min
+// require scripts
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks

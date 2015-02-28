@@ -52,6 +52,8 @@ group :development, :test do
   gem 'spring'
   # Hide secret keys
 	gem 'dotenv-rails'
+  # use ffaker for db population 
+  gem 'ffaker'
 
   gem 'rspec-rails', '~> 3.0.0'  
 # # <<<<<<< HEAD
