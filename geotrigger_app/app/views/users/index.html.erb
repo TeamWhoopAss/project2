@@ -1,17 +1,11 @@
-<div class = 'user'>
-<%= @users %>
-<% @users.each do |user| %>
-
-    <p>
-      <strong><%= user.email %></strong>
-        <%= button_to "Add Friend", friendships_path(:friend_id => user), :method => "post" %>
-        </p>
-    <% end %>
-</div>
-
-<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
+</head>
+
 <style>
   body { margin: 200px; padding: 200px; position: relative}
   #map { position: absolute; 
@@ -33,16 +27,32 @@
     z-index: 1;
 
        }
-</style>
-<style>
 /*
 * These CSS rules affect the tooltips within maps with the custom-popup
 * class. See the full CSS for all customizable options:
 * https://github.com/mapbox/mapbox.js/blob/001754177f3985c0e6b4a26e3c869b0c66162c99/theme/style.css#L3...
 */
+.leaflet-control-mapbox-geocoder-form {
+  background: #f7dcf7;
+  margin-bottom: 0px;
+  color: white;
+
+}
+
+.leaflet-control-container {
+  position: absolute;
+  left: 37.5%;
+  bottom: 150px;
+  color: white;
+}
+ 
+.leaflet-control-attribution {
+  display: none;
+} 
+
 .custom-popup .leaflet-popup-content-wrapper {
   background:#2c3e50  ;
-  color:#fff;
+  color: white;
   font-size:16px;
   line-height:24px;
 border-radius: 20px;
@@ -72,8 +82,11 @@ border-radius: 200px;
     top: 50px;
     height: 100%;
     width: 30px;
-    
   }
+.text {
+  color: white;
+}
+
 .custom-popup .leaflet-popup-tip {
   border-left:15px solid transparent;
   border-right:15px solid transparent;
@@ -86,12 +99,194 @@ color: black;
 background-color: black;
 border-radius: 200px;
   }
-
-  
 </style>
+<body>
+
+  <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+
+  <div class = 'user'>
+    <%= @users %>
+    <% @users.each do |user| %>
+    <p>
+      <strong><%= user.email %></strong>
+        <%= button_to "Add Friend", friendships_path(:friend_id => user), :method => "post" %>
+        </p>
+    <% end %>
+</div>
+
 <div class='custom-popup' id='map'></div>
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoibWFya21hcmttYXJrIiwiYSI6IjBVV1oxYUkifQ.eq_QpInsA8ggRqbXrJRtAw';
-var map = L.mapbox.map('map', 'jkdale89.l2l2p32i');
+
+
+var map = L.mapbox.map('map', 'jkdale89.l2l2p32i')
+
+
+
+
+// adds a search control that can recenter the map on various cities
+    .addControl(L.mapbox.geocoderControl('mapbox.places', {
+        autocomplete: true,
+        keepOpen: true
+    }));
+        
+    map.featureLayer.on("ready", function (){
+      
+    var RADIUS = 500;
+    var filterCircle = L.circle(L.latLng(37.7, -122), RADIUS, {
+    opacity: 1,
+    weight: 1,
+    fillOpacity: 0.4
+    }).addTo(map);
+
+var csvLayer = omnivore.csv('/mapbox.js/assets/data/airports.csv', null, L.mapbox.featureLayer())
+    .addTo(map);
+
+map.on('mousemove', function(e) {
+    filterCircle.setLatLng(e.latlng);
+    csvLayer.setFilter(function showAirport(feature) {
+        return e.latlng.distanceTo(L.latLng(
+                feature.geometry.coordinates[1],
+                feature.geometry.coordinates[0])) < RADIUS;
+    });
+});
+
+      marker.ondblclick=function(){
+        L.mapbox.marker.icon({
+          'marker-color': '000000'
+        })
+        draggable: false;
+      }
+
+
+    //
+    var loop = function() {
+      console.log(loop)
+      if(index < items.length) {
+        if (last) {
+          last.closePopup();
+        }
+        map.setView(items[index].getLatLng(),12);
+        items[index].openPopup();
+        last = items[index];
+        index += 1;
+      } else {
+        index = 0;
+      }
+      setTimeout(loop, 2000)
+    }
+
+    map.featureLayer.eachLayer(function(layer) {
+// Confirms you would like to play at the court and redirects the user to the matchups page
+      layer.on("click", function (){
+        var selectedCourt = this.feature.properties.title
+        var sport = this.feature.properties.description
+        console.log(this.feature.properties.title)
+        console.log(this.feature.properties.description)
+        map.setView(this.getLatLng())
+        var matchup = confirm('Would you like to play at ' + selectedCourt + '?')
+        if (matchup) {
+          document.location.href = "/matchup/"+selectedCourt+"/"+sport
+      }
+    })
+      items.push(layer);
+      console.log(items)
+    })
+})
 </script>
 
+</body>
+</html>
+<!-- //   var marker = L.marker(new L.LatLng(37.7749300 , -122.374200), {
+    //   icon: L.mapbox.marker.icon({
+    //   'marker-color': 'FFFF00',
+    //   'marker-symbol': 'basketball',
+    //   'description': 'Court'
+    //     }),
+    //   draggable: true
+    // });
+
+    //   var Bmarker = L.marker(new L.LatLng(37.7549300 , -122.374200), {
+    //   icon: L.mapbox.marker.icon({
+    //   'marker-color': 'FFFF00',
+    //   'marker-symbol': 'america-football',
+    //   'description': 'Gridiron'
+    //     }),
+    //   draggable: true
+    // });
+
+    //   var Cmarker = L.marker(new L.LatLng(37.7649300 , -122.374200), {
+    //   icon: L.mapbox.marker.icon({
+    //   'marker-color': 'FFFF00',
+    //   'marker-symbol': 'soccer',
+    //   'description': 'Pitch'
+    //     }),
+    //   draggable: true
+    // });
+      //debugger;
+      // marker.bindPopup('Drag this marker to add a new Basketball Court!');
+      // marker.addTo(map);
+
+      // Bmarker.bindPopup('Drag this marker to add a new Football Field!');
+      // Bmarker.addTo(map);
+
+      // Cmarker.bindPopup('Drag this marker to add a new Soccer Field!');
+      // Cmarker.addTo(map); -->
+
+
+      <!-- //declares elements based on MapBox attributes - allows for sorting by sport!
+    // var all = document.getElementById('filter-all');
+    //     hoops = document.getElementById('hoops');
+    //     football = document.getElementById('football')
+    //     soccer = document.getElementById('soccer')
+    //   items = [];
+    //   last = null;
+    //   index = 0;
+    //   hoops.onclick = function(e) {
+    //     all.className = '';
+    //     soccer.className = '';
+    //     football.className = '';
+    //     this.className = 'active';
+    //     // The setFilter function takes a GeoJSON feature object
+    //     // and returns true to show it or false to hide it.
+    //     map.featureLayer.setFilter(function(f) {
+    //         return f.properties['description'] === 'Court';
+    //     });
+    //     return false;
+    // };
+    //   football.onclick = function(e) {
+    //         all.className = '';
+    //         hoops.className = '';
+    //         soccer.className = '';
+    //         this.className = 'active';
+    //         // The setFilter function takes a GeoJSON feature object
+    //         // and returns true to show it or false to hide it.
+    //         map.featureLayer.setFilter(function(f) {
+    //             return f.properties['description'] === 'Gridiron';
+    //         });
+    //         return false;
+    //     };
+    //   soccer.onclick = function(e) {
+    //         all.className = '';
+    //         hoops.className = '';
+    //         football.className ='';
+    //         this.className = 'active';
+    //         // The setFilter function takes a GeoJSON feature object
+    //         // and returns true to show it or false to hide it.
+    //         map.featureLayer.setFilter(function(f) {
+    //             return f.properties['description'] === 'Pitch';
+    //         });
+    //         return false;
+    //     };
+
+
+    // all.onclick = function() {
+    //     hoops.className = '';
+    //     soccer.className = '';
+    //     football.className = '';
+    //     this.className = 'active';
+    //     map.featureLayer.setFilter(function(f) {
+    //         // Returning true for all markers shows everything.
+    //         return true;
+    //     });
+    // }; -->

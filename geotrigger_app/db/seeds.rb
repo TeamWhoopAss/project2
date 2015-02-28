@@ -7,30 +7,37 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'ffaker'
 
+min_lat = 37.72429
+max_lat = 37.80653
+min_long = -122.47799
+max_long = -122.40314
 
-(1..100).each do
-  user_params = Hash.new
-  user_params[:email] = Faker::Internet.email
-  user_params[:email_confirmation] = user_params[:email]
-  user_params[:password] = "blah"
-  user_params[:password_confirmation] = user_params[:password]
-  user_params[:first_name] = Faker::Name.first_name
-  user_params[:last_name] = Faker::Name.last_name
-  # user_params[:latitude] = Faker::Geolocation.lat
-  # user_params[:longitude] = Faker::Geolocation.lng
-  new_user = User.create(user_params)
+activity_tag = ["Coffee", "Dinner", "Drinks", "Date", "ShitShooting"]
 
-(1..100).each do
-  activity_params = Activity.new
-  activity_params[:tag] = Faker::Lorem.word
-  activity_params[:name] = Faker::Lorem.sentence(word_count = 4)
-  activity_params[:description] = Faker::Lorem.sentences(sentence_count = 3)
-  activity_params[:full_street_address] = Faker::Address.street_address(include_secondary = false)
-  # activity_params[:latitude] = Geolocation.lat
-  # activity_params[:longitude] = Geolocation.lng
-  activity_params[:time_created] = Time
-  activity_params[:expiry] = Time
 
+# (1..500).each do
+#   user = Hash.new
+#   user[:email] = Faker::Internet.email
+#   # user[:email_confirmation] = user[:email]
+#   user[:password] = "blah"
+#   user[:password_confirmation] = user[:password]
+#   user[:first_name] = Faker::Name.first_name
+#   user[:last_name] = Faker::Name.last_name
+#   # user[:latitude] = Faker::Geolocation.lat
+#   # user[:longitude] = Faker::Geolocation.lng
+#   new_user = User.create(user)
+
+(1..500).each do
+  activity = Hash.new
+  activity[:user_id] = rand(1..500)
+  activity[:friend_id] = rand(1..500)
+  activity[:activity_tag] = activity_tag[rand(4)]
+  activity[:location_name] = Faker::Lorem.sentence(word_count = 3)
+  activity[:activity_description] = Faker::Lorem.sentences(sentence_count = 3)
+  # activity[:full_street_address] = Faker::Address.street_address(include_secondary = false)
+  activity[:lat] = ((max_lat-min_lat)*rand()) + min_lat
+  activity[:lon] = ((max_long-min_long)*rand()) + max_long
+  new_activity = Activity.create(activity)
   end
-end
+
 
