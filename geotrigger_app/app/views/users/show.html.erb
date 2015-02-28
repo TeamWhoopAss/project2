@@ -7,7 +7,7 @@
 			<% @friends.each do |friend| %>
 				<div>
 					<%= friend.email %>
-					<%= button_to "remove", friend, :method => :delete %>
+					
 				</div>
 			<% end %>
 			<p><%= link_to "Find Friends", users_path %></p>
@@ -16,7 +16,7 @@
 		<h2>Users Who Have Befriended You</h2>
 		<ul>
 		  <% for user in @user.inverse_friends %>
-		  <li><%= user.email %></li>
+		  <div><%= user.email %></div>
 		  <% end %>
 		</ul>
 	</div>

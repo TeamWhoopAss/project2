@@ -27,17 +27,35 @@ activity_tag = ["Coffee", "Dinner", "Drinks", "Date", "ShitShooting"]
 #   # user[:longitude] = Faker::Geolocation.lng
 #   new_user = User.create(user)
 
-(1..500).each do
-  activity = Hash.new
-  activity[:user_id] = rand(1..500)
-  activity[:friend_id] = rand(1..500)
-  activity[:activity_tag] = activity_tag[rand(4)]
-  activity[:location_name] = Faker::Lorem.sentence(word_count = 3)
-  activity[:activity_description] = Faker::Lorem.sentences(sentence_count = 3)
-  # activity[:full_street_address] = Faker::Address.street_address(include_secondary = false)
-  activity[:lat] = ((max_lat-min_lat)*rand()) + min_lat
-  activity[:lon] = ((max_long-min_long)*rand()) + max_long
-  new_activity = Activity.create(activity)
-  end
+# (1..500).each do
+#   activity = Hash.new
+#   activity[:user_id] = rand(1..500)
+#   activity[:friend_id] = rand(1..500)
+#   activity[:activity_tag] = activity_tag[rand(4)]
+#   activity[:location_name] = Faker::Lorem.sentence(word_count = 3)
+#   activity[:activity_description] = Faker::Lorem.sentences(sentence_count = 3)
+#   # activity[:full_street_address] = Faker::Address.street_address(include_secondary = false)
+#   activity[:lat] = ((max_lat-min_lat)*rand()) + min_lat
+#   activity[:lon] = ((max_long-min_long)*rand()) + max_long
+#   new_activity = Activity.create(activity)
+#   end
+
+# lastUser = User.count
+# i = 0
+
+# (i..User.count).each do
+#   friendship_id = rand(User.count)
+#   user_friendship = Hash.new
+#   user_friendship[:user_id] = i
+#   user_friendship[:friend_id] = friendship_id
+#   friend_friendship = Hash.new
+#   friend_friendship[:user_id] = friendship_id
+#   friend_friendship[:friend_id] = i
+#   new_friend_friendship = Friendship.create(friend_friendship)
+#   new_user_friendship = Friendship.create(user_friendship)
+#   i+= 1
+# end
+
+
 
 
