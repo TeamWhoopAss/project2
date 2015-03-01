@@ -2,6 +2,30 @@ class ActivitiesController < ApplicationController
 
 	def index
 		@activities = Activity.all
+		@geojson = Array.new
+
+		@activities.each do |activity|
+			@geojson << {
+				type: 'Feature',
+				geometry: {
+					type: 'Point',
+					coordinates: [activity.longitude, activity.latitude]
+				},
+				properties: {
+					activity_description: activity.activity_description,
+					address: activity.street,
+					:'marker-color' => '#00607d',
+					:'marker-symbol' => 'circle',
+					:'marker-size' => 'medium'
+				}
+			}
+		end
+		
+		respond_to do |format|
+			format.html
+			# responds w/ the geojson obj created
+			format.json { render json: @geojson }
+		end
 	end
 
 	def new

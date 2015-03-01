@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Object Geocoding, coordinates, address lookup, and reverse geocoding
 gem 'geocoder'
+gem 'protected_attributes'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # Redis for Rails
@@ -55,15 +56,6 @@ group :development, :test do
   # use ffaker for db population 
   gem 'ffaker'
 
-  gem 'rspec-rails', '~> 3.0.0'  
-# # <<<<<<< HEAD
-  
-
-# =======
-
-#   gem 'ffaker'
-  
-#   # gem 'pry-rails'
-# >>>>>>> 33af06a5fdad6ac365c602cafa68e709b0013797
+  gem 'rspec-rails', '~> 3.0.0'
 end
 
