@@ -9,6 +9,9 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 
+	def test
+	end
+
 	def create
 		@user = User.create(user_params)
 		login(@user)

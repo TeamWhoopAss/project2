@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
 </head>
@@ -102,7 +103,7 @@ border-radius: 200px;
 </style>
 <body>
 
-  <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+  <div id="geoJson" style="display:none;"></div>
 
   <div class = 'user'>
     <%= @users %>
@@ -115,14 +116,39 @@ border-radius: 200px;
 </div>
 
 <div class='custom-popup' id='map'></div>
-<script>
+
+<script type="text/javascript">
+// $(document).on("ready page:load", function() {
+//  $.get("/generator/index.json", function (data) {
+//    console.log(data);
+//    alert('found something');
+//  });
+// });
+
+$(document).ready(function() {
+  $.get("/generator/index.json", function (data) {
+    // console.log(data.json);
+    generator = data.json;
+  });
+});
+
+
+
 L.mapbox.accessToken = 'pk.eyJ1IjoibWFya21hcmttYXJrIiwiYSI6IjBVV1oxYUkifQ.eq_QpInsA8ggRqbXrJRtAw';
+  
 
+  var map = L.mapbox.map('map', 'jkdale89.l2l2p32i')
+  // var myLayer = L.mapbox.featureLayer().addTo(map);
 
-var map = L.mapbox.map('map', 'jkdale89.l2l2p32i')
-
-
-
+    // $.ajax({ 
+    //   dataType: 'text',
+    //   url: '/generator/index.json',
+    //   success: function(data) {
+    //     var geojson;
+    //     geojson = $.parseJSON(data)   
+    //       return myLayer.setGeoJSON(geojson);
+    //     }
+    //   });
 
 // adds a search control that can recenter the map on various cities
     .addControl(L.mapbox.geocoderControl('mapbox.places', {
@@ -131,67 +157,26 @@ var map = L.mapbox.map('map', 'jkdale89.l2l2p32i')
     }));
         
     map.featureLayer.on("ready", function (){
+      var myLayer = L.mapbox.featureLayer().addTo(map);
       
-    var RADIUS = 500;
-    var filterCircle = L.circle(L.latLng(37.7, -122), RADIUS, {
-    opacity: 1,
-    weight: 1,
-    fillOpacity: 0.4
-    }).addTo(map);
 
-var csvLayer = omnivore.csv('/mapbox.js/assets/data/airports.csv', null, L.mapbox.featureLayer())
-    .addTo(map);
+// CREATES A RADIUS HOVER MARKER
+//     var RADIUS = 500;
+//     var filterCircle = L.circle(L.latLng(37.7, -122), RADIUS, {
+//     opacity: 1,
+//     weight: 1,
+//     fillOpacity: 0.4
+//     }).addTo(map);
 
-map.on('mousemove', function(e) {
-    filterCircle.setLatLng(e.latlng);
-    csvLayer.setFilter(function showAirport(feature) {
-        return e.latlng.distanceTo(L.latLng(
-                feature.geometry.coordinates[1],
-                feature.geometry.coordinates[0])) < RADIUS;
-    });
-});
-
-      marker.ondblclick=function(){
-        L.mapbox.marker.icon({
-          'marker-color': '000000'
-        })
-        draggable: false;
-      }
-
-
-    //
-    var loop = function() {
-      console.log(loop)
-      if(index < items.length) {
-        if (last) {
-          last.closePopup();
-        }
-        map.setView(items[index].getLatLng(),12);
-        items[index].openPopup();
-        last = items[index];
-        index += 1;
-      } else {
-        index = 0;
-      }
-      setTimeout(loop, 2000)
-    }
-
-    map.featureLayer.eachLayer(function(layer) {
-// Confirms you would like to play at the court and redirects the user to the matchups page
-      layer.on("click", function (){
-        var selectedCourt = this.feature.properties.title
-        var sport = this.feature.properties.description
-        console.log(this.feature.properties.title)
-        console.log(this.feature.properties.description)
-        map.setView(this.getLatLng())
-        var matchup = confirm('Would you like to play at ' + selectedCourt + '?')
-        if (matchup) {
-          document.location.href = "/matchup/"+selectedCourt+"/"+sport
-      }
-    })
-      items.push(layer);
-      console.log(items)
-    })
+//  HIDES AND SHOWS LAYERS WITHIN THE RADIUS
+//     map.on('mousemove', function(e) {
+//     filterCircle.setLatLng(e.latlng);
+//     csvLayer.setFilter(function showAirport(feature) {
+//         return e.latlng.distanceTo(L.latLng(
+//                 feature.geometry.coordinates[1],
+//                 feature.geometry.coordinates[0])) < RADIUS;
+//     });
+// });
 })
 </script>
 
@@ -290,3 +275,35 @@ map.on('mousemove', function(e) {
     //         return true;
     //     });
     // }; -->
+
+    <!-- // Confirms you would like to play at the court and redirects the user to the matchups page
+      // layer.on("click", function (){
+      //   var selectedCourt = this.feature.properties.title
+      //   var sport = this.feature.properties.description
+      //   console.log(this.feature.properties.title)
+      //   console.log(this.feature.properties.description)
+      //   map.setView(this.getLatLng())
+      //   var matchup = confirm('Would you like to play at ' + selectedCourt + '?')
+      //   if (matchup) {
+      //     document.location.href = "/matchup/"+selectedCourt+"/"+sport
+      // }
+    // })
+    //   items.push(layer);
+    //   console.log(items) -->
+<!-- 
+     // //
+    // var loop = function() {
+    //   console.log(loop)
+    //   if(index < items.length) {
+    //     if (last) {
+    //       last.closePopup();
+    //     }
+    //     map.setView(items[index].getLatLng(),12);
+    //     items[index].openPopup();
+    //     last = items[index];
+    //     index += 1;
+    //   } else {
+    //     index = 0;
+    //   }
+    //   setTimeout(loop, 2000)
+    // } -->

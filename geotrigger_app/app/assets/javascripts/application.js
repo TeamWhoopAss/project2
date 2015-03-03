@@ -20,6 +20,7 @@
 //= require turbolinks
 //= require_tree .
 
+
 // toggle visibility for css3 animations 
 $(document).ready(function() {
 	$('header').addClass('visibility');
