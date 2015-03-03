@@ -7,7 +7,9 @@ class Activity < ActiveRecord::Base
  #           :latitude => :lat, :longitude => :lon
  #  	after_validation :geocode
 
-  attr_accessible :address, :latitude, :longitude, :city, :state, :street, :zip, :lat, :lon
+  attr_accessible :address, :latitude, :longitude, :city, :state, :street, :zip,
+                  :location_name, :activity_name
+  # , :lat, :lon
 
     def address
       [street, city, state, zip].compact.join(', ')
@@ -16,6 +18,10 @@ class Activity < ActiveRecord::Base
     geocoded_by :address
     after_validation :geocode
 end
+
+
+
+
 
 # class Order < ActiveRecord::Base
 
