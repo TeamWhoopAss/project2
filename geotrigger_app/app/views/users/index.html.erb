@@ -117,48 +117,56 @@ border-radius: 200px;
 
 <div class='custom-popup' id='map'></div>
 
-<script type="text/javascript">
-// $(document).on("ready page:load", function() {
-//  $.get("/generator/index.json", function (data) {
-//    console.log(data);
-//    alert('found something');
-//  });
+<script>
+// var generator = {}
+// $(document).ready(function() {
+//     $.get("/generator/index.json", function (data) {
+//       // console.log(data.json);
+//   generator = data.json;
+//   });
 // });
 
+// generator = generator.substr(0,generator.length - 1)
 $(document).ready(function() {
-  $.get("/generator/index.json", function (data) {
-    // console.log(data.json);
-    generator = data.json;
+
+  var test = {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-122.468, 37.77]
+        },
+        "properties": {
+          "title": "Mapbox DC",
+          "marker-symbol": "monument"
+        }
+      };
+  // generator = generator.substr(0,generator.length-1)
+  L.mapbox.accessToken = 'pk.eyJ1IjoibWFya21hcmttYXJrIiwiYSI6IjBVV1oxYUkifQ.eq_QpInsA8ggRqbXrJRtAw';
+    var map = L.mapbox.map('map', 'jkdale89.l2l2p32i')
+    $.getJSON("/generator/index.json",function(data){
+    // add GeoJSON layer to the map once the file is loaded
+    // console.log(JSON.stringify(data["json"].substr(1,data["json"].length-2)));
+    L.geoJson(test).addTo(map);    
+
+    // L.geoJson(JSON.stringify(data["json"].substr(1,data["json"].length-2))).addTo(map);
   });
-});
-
-
-
-L.mapbox.accessToken = 'pk.eyJ1IjoibWFya21hcmttYXJrIiwiYSI6IjBVV1oxYUkifQ.eq_QpInsA8ggRqbXrJRtAw';
-  
-
-  var map = L.mapbox.map('map', 'jkdale89.l2l2p32i')
-  // var myLayer = L.mapbox.featureLayer().addTo(map);
-
     // $.ajax({ 
     //   dataType: 'text',
     //   url: '/generator/index.json',
     //   success: function(data) {
     //     var geojson;
     //     geojson = $.parseJSON(data)   
-    //       return myLayer.setGeoJSON(geojson);
+    //       return map.setGeoJSON(geojson);
     //     }
     //   });
 
 // adds a search control that can recenter the map on various cities
-    .addControl(L.mapbox.geocoderControl('mapbox.places', {
-        autocomplete: true,
-        keepOpen: true
-    }));
+    // .addControl(L.mapbox.geocoderControl('mapbox.places', {
+    //     autocomplete: true,
+    //     keepOpen: true
+    // }));
         
-    map.featureLayer.on("ready", function (){
-      var myLayer = L.mapbox.featureLayer().addTo(map);
-      
+}); 
 
 // CREATES A RADIUS HOVER MARKER
 //     var RADIUS = 500;
@@ -177,7 +185,7 @@ L.mapbox.accessToken = 'pk.eyJ1IjoibWFya21hcmttYXJrIiwiYSI6IjBVV1oxYUkifQ.eq_QpI
 //                 feature.geometry.coordinates[0])) < RADIUS;
 //     });
 // });
-})
+        
 </script>
 
 </body>

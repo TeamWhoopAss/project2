@@ -1,7 +1,7 @@
 class GeneratorController < ApplicationController
 
 	def index
-		generator = Generator.find(1)
+		generator = Generator.find(1)["json"].to_json
 
 		respond_to do |format|
   			format.html # show.html.erb
