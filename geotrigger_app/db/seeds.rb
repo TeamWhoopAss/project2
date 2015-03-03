@@ -133,7 +133,7 @@ activity_generator = [
 @geojson = Array.new
 
 @all_acts.each do |activity|
-	#matches index of activity_generator to activity tag
+	#matches index of array_generator to activity tag
 	x = (0..activity_generator.length).map do |i|
 	break i if activity_generator[i][0] === activity.activity_tag
 	i + 1

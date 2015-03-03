@@ -20,7 +20,19 @@
 //= require turbolinks
 //= require_tree .
 
+// $(document).on("ready page:load", function() {
+// 	$.get("/generator/index.json", function (data) {
+// 		console.log(data);
+// 		alert('found something');
+// 	});
+// });
 
+// $(document).ready(function() {
+// 	$.get("/generator/index.json", function (data) {
+// 		console.log(data.json);
+// 		alert('found something');
+// 	});
+// });
 // toggle visibility for css3 animations 
 $(document).ready(function() {
 	$('header').addClass('visibility');
@@ -177,12 +189,12 @@ $(window).resize(function () {
 
 
 // iPhone Header Carousel
-$('header .carousel').carousel({
-  interval: 3000
-})
+// $('header .carousel').carousel({
+//   interval: 3000
+// })
 
 // iPhone Features Carousel
-$('.detail .carousel').carousel({
-  interval: 4000
-})
+// $('.detail .carousel').carousel({
+//   interval: 4000
+// })
 
