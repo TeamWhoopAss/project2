@@ -29,6 +29,20 @@ ActiveRecord::Schema.define(version: 20150302133819) do
     t.binary   "pin_accepted"
     t.binary   "pin_confirmed"
     t.datetime "updated_at",           null: false
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -46,6 +60,17 @@ ActiveRecord::Schema.define(version: 20150302133819) do
 
   create_table "geo_jsons", force: :cascade do |t|
     t.text     "geoJson"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "address"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

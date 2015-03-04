@@ -3,6 +3,7 @@
 <head>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js"></script>
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
 </head>
@@ -118,13 +119,30 @@ border-radius: 200px;
 <div class='custom-popup' id='map'></div>
 
 <script>
-// var generator = {}
-// $(document).ready(function() {
-//     $.get("/generator/index.json", function (data) {
-//       // console.log(data.json);
-//   generator = data.json;
-//   });
-// });
+// var generator = {};
+// var activities = {};
+$(document).ready(function() {
+    $.get("/generator/index.json", function (data) {
+      console.log(data.json);
+      console.log("=========geoJson Object==========")
+      activities = [];
+      // activities = JSON.stringify(data);
+      // console.log(activities);
+      console.log("=========geoJson Object==========")
+      // console.log(activities.split('\''));
+      // console.log(activities[3]);
+      console.log(data)
+      activites = JSON.parse(data);
+      console.log(activities);
+
+      _.each(data, function(a) {
+        var activity = [];
+        activity.push(a.text);
+      });
+      console.log(data);
+      return generator = data.json;
+  });
+});
 
 // generator = generator.substr(0,generator.length - 1)
 $(document).ready(function() {

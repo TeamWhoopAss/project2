@@ -64,39 +64,39 @@ max_long = -122.40314
 
 # generates a random activity and associated properties
 # [activity, description, fake location]
-# activity_generator = [
-# 	["Coffee","Lots of Lattes?","Not Starbucks"],
-# 	["Drinks","Appletinis or Bust","Apples on Tapples"],
-# 	["Movies","50 Shades of Gray? Grey?","Any Discreet Theater"],
-# 	["Darts", "Throw pointy things!","Place Also Serving Alcohol"],
-# 	["Billards","Let's Hustle Some Fools","Nearby Shady Pool Hall"],
-# 	["Lunch","Lunch on Me in the Marina!","Royster's Oysters"],
-# 	["Dinner","Dinner on You in the Marina","It's on you - wherever!"],
-# 	["Brunch","Bottomless Mimosasssssssss (and maybe food...but probably not)","Dope Outdoor Patio"],
-# 	["Swimming","Triatholon Training, Bro","My Personal Lap Pool"],
-# 	["Board Games","Risky Business","Battlefied: Earth"],
-# 	["Jogging","Suns out: Runs Out","Neighborhood Park"],
-# 	["Crossfit","Let's do this once so we can brag about it","Unintentionally Public Place"],
-# 	["Gravedigging","Looting for Diamonds","Six Feet Under"],
-# 	["Tennis","Let's hit some balls mostly under the net...","Tennis and Winn-Uhs"],
-# 	["Giraffe Spotting","Some giraffes escaped from the zoo. Let's Find them!","Higher Ground"],
-# 	["Exhibitionist Painting","You paint, I'll nude model","Preferably outdoors"],
-# 	["Biking and Hiking","Let's climb this mountain because we can","Nearby Range"],
-# 	["Skydiving","Let's spice up our day!","The sky"]
-# 	]
+activity_generator = [
+	["Coffee","Lots of Lattes?","Not Starbucks"],
+	["Drinks","Appletinis or Bust","Apples on Tapples"],
+	["Movies","50 Shades of Gray? Grey?","Any Discreet Theater"],
+	["Darts", "Throw pointy things!","Place Also Serving Alcohol"],
+	["Billards","Let's Hustle Some Fools","Nearby Shady Pool Hall"],
+	["Lunch","Lunch on Me in the Marina!","Royster's Oysters"],
+	["Dinner","Dinner on You in the Marina","It's on you - wherever!"],
+	["Brunch","Bottomless Mimosasssssssss (and maybe food...but probably not)","Dope Outdoor Patio"],
+	["Swimming","Triatholon Training, Bro","My Personal Lap Pool"],
+	["Board Games","Risky Business","Battlefied: Earth"],
+	["Jogging","Suns out: Runs Out","Neighborhood Park"],
+	["Crossfit","Let's do this once so we can brag about it","Unintentionally Public Place"],
+	["Gravedigging","Looting for Diamonds","Six Feet Under"],
+	["Tennis","Let's hit some balls mostly under the net...","Tennis and Winn-Uhs"],
+	["Giraffe Spotting","Some giraffes escaped from the zoo. Let's Find them!","Higher Ground"],
+	["Exhibitionist Painting","You paint, I'll nude model","Preferably outdoors"],
+	["Biking and Hiking","Let's climb this mountain because we can","Nearby Range"],
+	["Skydiving","Let's spice up our day!","The sky"]
+	]
 
 
-# counts = Activity.count
-# i = 1
-# (i..counts).each do
-# 		current_activity_index = rand(activity_generator.length)
-# 			activity = Activity.find(i)
-# 			activity[:activity_tag] = activity_generator[current_activity_index][0]
-# 			activity[:activity_description] = activity_generator[current_activity_index][1]
-# 			activity[:location_name] = activity_generator[current_activity_index][2]
-# 			activity.save
-# 			i += 1
-# end
+counts = Activity.count
+i = 1
+(i..counts).each do
+		current_activity_index = rand(activity_generator.length)
+			activity = Activity.find(i)
+			activity[:activity_tag] = activity_generator[current_activity_index][0]
+			activity[:activity_description] = activity_generator[current_activity_index][1]
+			activity[:location_name] = activity_generator[current_activity_index][2]
+			activity.save
+			i += 1
+end
 
 
 
