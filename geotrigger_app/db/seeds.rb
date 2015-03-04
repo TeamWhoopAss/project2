@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'ffaker'
 
-min_lat = 37.72429
+min_lat = 37.67960879019194
 max_lat = 37.80653
-min_long = -122.47799
+min_long = -122.51129150390625
 max_long = -122.40314
 # activity_tag = ["Coffee", "Dinner", "Drinks", "Date", "ShitShooting"]
 
@@ -28,12 +28,13 @@ max_long = -122.40314
 
 
 # i = 1
-# counts = Activity.count
-# i = 1
-# (i..counts).each do
+counts = Activity.count
+i = 1
+(i..counts).each do
   
-#   activity = Activity.find(i)
-#   activity.update_attributes({lon:(max_long-min_long)*rand() + min_long});
+  activity = Activity.find(i)
+  activity.update_attributes({lon:(max_long-min_long)*rand() + min_long});
+  activity.update_attributes({lat:(max_lat-min_lat)*rand() + min_lat});
   # activity[:id] = i
   # activity[:user_id] = rand(1..500)
   # activity[:friend_id] = rand(1..500)
@@ -44,8 +45,8 @@ max_long = -122.40314
   # activity[:lat] = ((max_lat-min_lat)*rand()) + min_lat
   # activity[:lon] = ((max_long-min_long)*rand()) + min_long
   # acitivy.save
-  # i = i + 1
-  # end
+  i = i + 1
+  end
 
 # lastUser = User.count
 # i = 0

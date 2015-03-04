@@ -1,6 +1,5 @@
 
 # require "byebug"
-require_relative "db"
 
 #taken from seeds.rb to allow lookups of color and marker-symbol for each activity type
 activity_generator = [
