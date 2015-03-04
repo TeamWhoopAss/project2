@@ -28,20 +28,24 @@ max_long = -122.40314
 
 
 # i = 1
-# (i..15).each do
-#   activity = Hash.new
-#   activity[:id] = i
-#   activity[:user_id] = rand(1..500)
-#   activity[:friend_id] = rand(1..500)
-#   activity[:activity_tag] = activity_tag[rand(4)]
-#   activity[:location_name] = Faker::Lorem.sentence(word_count = 3)
-#   activity[:activity_description] = Faker::Lorem.sentences(sentence_count = 3)
-#   # activity[:full_street_address] = Faker::Address.street_address(include_secondary = false)
-#   activity[:lat] = ((max_lat-min_lat)*rand()) + min_lat
-#   activity[:lon] = ((max_long-min_long)*rand()) + max_long
-#   new_activity = Activity.create(activity)
-#   i = i + 1
-#   end
+# counts = Activity.count
+# i = 1
+# (i..counts).each do
+  
+#   activity = Activity.find(i)
+#   activity.update_attributes({lon:(max_long-min_long)*rand() + min_long});
+  # activity[:id] = i
+  # activity[:user_id] = rand(1..500)
+  # activity[:friend_id] = rand(1..500)
+  # activity[:activity_tag] = activity_tag[rand(4)]
+  # activity[:location_name] = Faker::Lorem.sentence(word_count = 3)
+  # activity[:activity_description] = Faker::Lorem.sentences(sentence_count = 3)
+  # activity[:full_street_address] = Faker::Address.street_address(include_secondary = false)
+  # activity[:lat] = ((max_lat-min_lat)*rand()) + min_lat
+  # activity[:lon] = ((max_long-min_long)*rand()) + min_long
+  # acitivy.save
+  # i = i + 1
+  # end
 
 # lastUser = User.count
 # i = 0
@@ -138,20 +142,18 @@ activity_generator = [
 	break i if activity_generator[i][0] === activity.activity_tag
 	i + 1
 	end
-	
 	@geojson << {
-		type: 'Feature',
-		geometry: {
-			type: 'Point',
-			coordinates: [activity.lon, activity.lat]
+		'type' => 'Feature','geometry' => {
+			'type' => 'Point',
+			'coordinates' => [activity.lon, activity.lat]
 		},
-		properties: {
-			name: activity.activity_tag,
-			location: activity.location_name,
-			description: activity.activity_description,
-			:'marker-size' => 'large',
-			:'marker-color' => activity_generator[x][3] ,
-			:'marker-symbol' => activity_generator[x][4] 
+		'properties' => {
+			'name' => activity.activity_tag,
+			'location' => activity.location_name,
+			'description' => activity.activity_description,
+			'marker-size' => 'large',
+			'marker-color' => activity_generator[x][3] ,
+			'marker-symbol' => activity_generator[x][4] 
 		}
 	}
 end

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get 'sign_up', to: 'users#new'
   get 'login', to: 'sessions#new'
   get '/generator/index', to: 'generator#index'
-
+  get 'users/test'
 
   # get 'users/edit'
 

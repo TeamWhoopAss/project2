@@ -103,19 +103,6 @@ border-radius: 200px;
 </style>
 <body>
 
-  <div id="geoJson" style="display:none;"></div>
-
-  <div class = 'user'>
-    <%= @users %>
-    <% @users.each do |user| %>
-    <p>
-      <strong><%= user.email %></strong>
-        <%= button_to "Add Friend", friendships_path(:friend_id => user), :method => "post" %>
-        </p>
-    <% end %>
-</div>
-
-<div class='custom-popup' id='map'></div>
 
 <script>
 // var generator = {}
@@ -164,11 +151,11 @@ $(document).ready(function() {
     var map = L.mapbox.map('map', 'jkdale89.l2l2p32i')
     $.getJSON("/generator/index.json",function(data){
     // add GeoJSON layer to the map once the file is loaded
-    console.log(data);
-    L.geoJson(data).addTo(map);    
-    });
+    console.log(JSON.stringify(data["json"].substr(1,data["json"].length-2)));
+    L.geoJson(geoJSON).addTo(map);    
+
     // L.geoJson(JSON.stringify(data["json"].substr(1,data["json"].length-2))).addTo(map);
-  
+  });
     // $.ajax({ 
     //   dataType: 'text',
     //   url: '/generator/index.json',
@@ -184,8 +171,6 @@ $(document).ready(function() {
     //     autocomplete: true,
     //     keepOpen: true
     // }));
-  // var markers = new mapboxgl.GeoJSONSource({ data: geoJSON });
-  // map.addSource('markers', markers);
 
 }); 
 
