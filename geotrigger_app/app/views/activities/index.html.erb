@@ -1,3 +1,175 @@
+
+<head>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
+
+
+
+<style>
+  .geoJson { margin: 200px; padding: 200px; position: relative}
+  #map { position: absolute; 
+         left: 25%; 
+         display: inline-block;
+         margin: 0 auto;
+         top: 25px;
+         bottom:25px; 
+         width: 50%;
+         height: 100%;
+         border-radius: 100%;
+         background-color: black;
+         background-image: 
+         radial-gradient(center, rgba(255,255,255,1) 100%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 50%),
+        linear-gradient(top, rgba(0,0,0,1) 100%, rgba(113,113,114,1) 100%);
+        background-size: 128px 128px, 100%, 100%;
+    background-position: center -54px, left top;
+    background-repeat: no-repeat, repeat;
+    z-index: 1;
+
+       }
+/*
+* These CSS rules affect the tooltips within maps with the custom-popup
+* class. See the full CSS for all customizable options:
+* https://github.com/mapbox/mapbox.js/blob/001754177f3985c0e6b4a26e3c869b0c66162c99/theme/style.css#L3...
+*/
+.leaflet-control-mapbox-geocoder-form {
+  background: #f7dcf7;
+  margin-bottom: 0px;
+  color: black;
+
+}
+
+.leaflet-control-container {
+  position: absolute;
+  left: 37.5%;
+  bottom: 150px;
+  color: black;
+}
+ 
+.leaflet-control-attribution {
+  display: none;
+} 
+
+.custom-popup .leaflet-popup-content-wrapper {
+  background:#2c3e50  ;
+  color: white;
+  font-size:16px;
+  line-height:24px;
+border-radius: 20px;
+  }
+.custom-popup .leaflet-popup-content-wrapper a {
+  color:rgba(255,255,255,0.5);
+  border-color: red;
+border: aliceblue;
+border-width: thick;
+color: black;
+background-color: black;
+border-radius: 200px;
+  }
+.custom-popup .leaflet-popup-tip-container {
+  width:30px;
+  height:15px;
+  border-color: red;
+border: aliceblue;
+border-width: thick;
+color: black;
+background-color: black;
+border-radius: 200px;
+  }
+  .user {
+    position: absolute;
+    right: 10px;
+    top: 50px;
+    height: 100%;
+    width: 30px;
+  }
+.text {
+  color: black;
+}
+
+.custom-popup .leaflet-popup-tip {
+  border-left:15px solid transparent;
+  border-right:15px solid transparent;
+  border-top:15px solid #2c3e50 ;
+  border-radius: 15px;
+  border-color: red;
+border: aliceblue;
+border-width: thick;
+color: black;
+background-color: black;
+border-radius: 200px;
+  }
+</style>
+</head>
+
+<body>
+
+
+<div id="body" style="display:none;"></div>
+
+
+<div class='custom-popup' id='map'></div>
+
+
+<script type="text/javascript">
+
+// // $(document).on("ready page:load", function() {
+// //  $.get("/generator/index.json", function (data) {
+// //    console.log(data);
+// //    alert('found something');
+// //  });
+// // });
+
+// // var generator = {};
+
+// // $(document).ready(function() {
+// //   $.get("/activities.json", function (data) {
+// //     console.log(data);
+// //     activities = data.json;
+// //   });
+// // });
+
+// $(document).ready(function () {
+
+//   L.mapbox.accessToken = 'pk.eyJ1IjoibWFya21hcmttYXJrIiwiYSI6IjBVV1oxYUkifQ.eq_QpInsA8ggRqbXrJRtAw';
+
+//   var map = L.mapbox.map('map', 'jkdale89.l2l2p32i');
+//   // var myLayer = L.mapbox.featureLayer().addTo(map);
+
+//   // map.featureLayer.on('layeradd', function(e) {
+//   //   var marker, popupContent, properties;
+//   //   marker = e.layer;
+//   //   properties = marker.feature.properties;
+//   //   popupContent = '<div class="popup">' + '<h3>' + properties.name + '</h3>' + '<p>' + properties.address + '</p>' + '</div>';
+//   //   return marker.bindPopup(popupContent, {
+//   //     closeButton: false,
+//   //     minWidth: 320
+//   //   });
+//   // });
+//   $.ajax({ 
+//     dataType: 'text',
+//     url: '/activities.json',
+//     success: function(data) {
+//       var geojson;
+//       geojson = $.parseJSON(data);   
+//         return map.setGeoJSON(geojson);
+//     }
+//   });
+// });
+// // adds a search control that can recenter the map on various cities
+//     // .addControl(L.mapbox.geocoderControl('mapbox.places', {
+//     //     autocomplete: true,
+//     //     keepOpen: true
+//     // }));
+        
+   
+//   // });
+</script>
+</div>
+
 <div class="container">
   <div id="activities-create">
   <br>
@@ -20,3 +192,72 @@
 <% end %>
 </div>
 </div>
+<script type="text/javascript">
+
+// $(document).on("ready page:load", function() {
+//  $.get("/generator/index.json", function (data) {
+//    console.log(data);
+//    alert('found something');
+//  });
+// });
+
+// var generator = {};
+
+// $(document).ready(function() {
+//   $.get("/activities.json", function (data) {
+//     console.log(data);
+//     activities = data;
+//   });
+// });
+
+$(document).ready(function() {
+  $.get("/activities.json", function (data) {
+    console.log(data);
+    return data;
+  });
+});
+
+$(document).ready(function () {
+
+  L.mapbox.accessToken = 'pk.eyJ1IjoibWFya21hcmttYXJrIiwiYSI6IjBVV1oxYUkifQ.eq_QpInsA8ggRqbXrJRtAw';
+
+  var map = L.mapbox.map('map', 'jkdale89.l2l2p32i');
+  // var myLayer = L.mapbox.featureLayer().addTo(map);
+
+  // map.featureLayer.on('layeradd', function(e) {
+  //   var marker, popupContent, properties;
+  //   marker = e.layer;
+  //   properties = marker.feature.properties;
+  //   popupContent = '<div class="popup">' + '<h3>' + properties.name + '</h3>' + '<p>' + properties.address + '</p>' + '</div>';
+  //   return marker.bindPopup(popupContent, {
+  //     closeButton: false,
+  //     minWidth: 320
+  //   });
+  // });
+
+  $.get("/activities.json", function (data) {
+    var geojson;
+    geojson = JSON.parse(data);
+      return map.setGeoJSON(geojson);
+  });
+});
+//   $.ajax({ 
+//     url: '/activities.json',
+//     dataType: 'text',
+//     success: function(data) {
+//       var geojson;
+//       geojson = $.parseJSON(data);   
+//         return map.setGeoJSON(geojson);
+//     }
+//   });
+// });
+// adds a search control that can recenter the map on various cities
+    // .addControl(L.mapbox.geocoderControl('mapbox.places', {
+    //     autocomplete: true,
+    //     keepOpen: true
+    // }));
+        
+   
+  // });
+</script>
+</body>

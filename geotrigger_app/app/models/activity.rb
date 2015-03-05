@@ -2,6 +2,40 @@ class Activity < ActiveRecord::Base
 	has_one :friend, :through => :friendship
 	has_one :user, :through => :friendship
 
+  # @@activities
+  # @@activity
+
+  # def get_activity
+  #   activity = request.activity
+  #   return activity
+  # end
+
+  def self.to_json
+    @activities = Activity.all
+    @geojson = []
+    
+    @activities.each do |activity|
+      @geojson << {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [activity.latitude, activity.longitude]
+        },
+        properties: {
+          id: activity.id,
+          name: activity.location_name,
+          number: activity.activity_tag,
+          description: activity.activity_description,
+          :'marker-color' => '#00607d',
+          :'marker-symbol' => 'circle',
+          :'marker-size' => 'medium'
+        }
+      }
+    end
+  end
+
+
+  attr_accessor :geoJson, :activity_description, :activity_name, :latitude, :longitude, :street, :address
 	# attr_accessor :ip_address
 	# geocoded_by :ip_address,
  #           :latitude => :lat, :longitude => :lon
@@ -15,7 +49,8 @@ class Activity < ActiveRecord::Base
       [street, city, state, zip].compact.join(', ')
     end
 
-    geocoded_by :address
+    geocoded_by :address,
+            :latitude => :lat, :longitude => :lon
     after_validation :geocode
 end
 
