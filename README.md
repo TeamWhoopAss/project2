@@ -3,9 +3,9 @@
 ## A Social Interaction Application
 
 ## Summary of project:
-  Around and Down is designed to allow the user
-  to set activity-based pins on a map to help
-  alert the user's friends to joinable events.
+  Around and Down is designed to allow a user
+  to set activity-based pins on a map. This
+  alerts the user's friends to possible activities to join.
 
 ## Technologies Used:
    Ruby on Rails
@@ -13,7 +13,7 @@
    JQuery
    Bootstrap
    MapBox API
-   
+   Twitter Oauth
 
 
 
